@@ -3,10 +3,11 @@ package main
 import (
 	"fmt"
 	"sync"
+	"testing"
 	"time"
 )
 
-func main() {
+func TestWg(t *testing.T) {
 	ch := make(chan int, 2)
 	ch <- 5
 	close(ch)
@@ -105,7 +106,7 @@ func ConsumerProduce() {
 			}
 			mypool.Unlock()
 
-			if time.Now().Sub(st).Seconds() > 1 {
+			if time.Since(st).Seconds() > 1 {
 				fmt.Println("time out")
 				break
 			}
