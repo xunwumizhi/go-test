@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html">
+</head>
+
+<body>
+    <div>{{.Title}}</div>
+
+    <div>
+        <h2>标题2</h2>
+        <table style="border-width:1px;border-style:solid;border-color:#0099CC;">
+            <tr style="background-color: #0099CC; color: #ffffff;
+            border-width:1px;border-style:solid;border-color:#0099CC;">
+
+                <th>列1</th>
+                <th>列2</th>
+                <th>列3</th>
+
+            </tr>
+
+            {{ range .Rows }}
+            <tr style="text-align:center; background: #F0F0F0;
+            border-width:1px;border-style:solid;border-color:#0099CC;">
+
+                {{ if and (lt .AppCPUAvg 15.0) (lt .AppCPUMax 50.0) }}
+                <td style="color: #FF0000;">{{.Filed1}}</td>
+                <td style="color: #FF0000;">{{.Filed1}}</td>
+                <td>{{.Filed3}}</td>
+                {{ else }}
+                <td>{{.Filed1}}</td>
+                <td>{{.Filed2}}</td>
+                <td>{{.Filed3}}</td>
+                {{ end }}
+
+            </tr>
+            {{end}}
+        </table>
+    </div>
+    <br />
+    <br />
+
+</body>
+
+</html>
