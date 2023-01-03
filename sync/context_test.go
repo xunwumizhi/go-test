@@ -35,3 +35,15 @@ func TestCancelCtx(t *testing.T) {
 		fmt.Println("parent not done")
 	}
 }
+
+func TestTimeoutCtx(t *testing.T) {
+	ctx, cancel := context.WithTimeout(context.TODO(), 2*time.Second)
+	go func(context.Context) {
+		time.Sleep(3 * time.Second) // context deadline exceeded
+		// time.Sleep(1 * time.Second) // canceled
+		cancel()
+	}(ctx)
+
+	<-ctx.Done()
+	fmt.Println("ctx error: ", ctx.Err())
+}
