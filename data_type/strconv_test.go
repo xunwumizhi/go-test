@@ -10,4 +10,6 @@ func TestZero(t *testing.T) {
 	str := ""
 	i, err := strconv.Atoi(str)
 	fmt.Printf("i: %d, err: %v\n", i, err)
+
+	fmt.Println(strconv.Itoa(0))
 }

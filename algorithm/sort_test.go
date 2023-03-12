@@ -18,3 +18,16 @@ func TestSortSlice(t *testing.T) {
 	})
 	fmt.Println(list)
 }
+
+func TestSortFn(t *testing.T) {
+	list := []int{1, 3, 2, 6, 2, 7}
+	sortInt(list, func(i, j int) bool {
+		// return list[i] >= list[j]
+		return list[i] > list[j]
+	})
+	fmt.Println(list)
+}
+
+func sortInt(list []int, less func(i, j int) bool) {
+	sort.Slice(list, less)
+}

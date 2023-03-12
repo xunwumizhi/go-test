@@ -22,4 +22,8 @@ func TestDecimal(t *testing.T) {
 
 	fmt.Println(1000 / 8)
 	fmt.Println(125 * 1e6 / math.Exp2(20))
+
+	fmt.Println(math.Exp2(20)) // 2^20
+	fmt.Println(1 << 20)
+	fmt.Println(math.Log2(1048576))
 }
