@@ -14,8 +14,11 @@ func TestSortSlice(t *testing.T) {
 	fmt.Println(list)
 
 	sort.Slice(list, func(i, j int) bool {
-		return list[i] < list[j] // 逆序
+		return list[i] < list[j] // 正序
 	})
+	fmt.Println(list)
+
+	sort.Ints(list)
 	fmt.Println(list)
 }
 

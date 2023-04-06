@@ -1,6 +1,7 @@
 package main
 
 import (
+	"container/list"
 	"fmt"
 	"testing"
 )
@@ -27,4 +28,8 @@ func deleteWithCopy(a []int, i int) []int {
 	copyedNum := copy(a[i:], a[i+1:])
 	fmt.Println("copy num:", copyedNum)
 	return a[:len(a)-1]
+}
+
+func TestList(t *testing.T) {
+	list.New()
 }

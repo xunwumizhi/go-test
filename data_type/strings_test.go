@@ -17,3 +17,10 @@ arf
 		fmt.Printf("%d: %s, len: %d\n", i, v, len(v))
 	}
 }
+
+func TestStringBytes(t *testing.T) {
+	s := "Hello World"
+	for i, n := range s {
+		fmt.Println(i, n)
+	}
+}
