@@ -6,6 +6,13 @@ import (
 	"testing"
 )
 
+func TestBinary(t *testing.T) {
+	var _8var = 011
+	var _16var = 0x11
+	fmt.Println("011 to 10进制: ", _8var)
+	fmt.Println("0x11 to 10进制: ", _16var)
+}
+
 func TestBit(t *testing.T) {
 	// 取反
 	var v uint32 = 474
@@ -20,4 +27,16 @@ func TestBit(t *testing.T) {
 	c := a & (^b)
 	fmt.Printf("a: %b\n", a)
 	fmt.Printf("c: %b\n", c)
+}
+
+func TestBitCal(t *testing.T) {
+	var u int64 = 1
+	fmt.Println(u << 2)
+	fmt.Println("1<<63", u<<63)
+	fmt.Println("-1<<63", (-1)<<63)
+	fmt.Println("1<<63-1", u<<63-1) // 最大正数
+	fmt.Println(math.MaxInt64)
+	fmt.Println("-(1<<63-1)", -(u<<63 - 1))   // 最大正数取反
+	fmt.Println("-(1<<63-1)-1", -(u<<63-1)-1) // 最大正数取反后-1 为最小负数
+	fmt.Println(math.MinInt64)
 }

@@ -3,6 +3,7 @@ package main
 import (
 	"crypto/hmac"
 	"crypto/sha256"
+	"encoding/base64"
 	"encoding/hex"
 	"fmt"
 	"testing"
@@ -19,4 +20,10 @@ func encode(data string) {
 	h.Write([]byte(data))
 	cryptoData := hex.EncodeToString(h.Sum(nil))
 	fmt.Println(cryptoData)
+}
+
+func TestBase64(t *testing.T) {
+	jsonStr := ``
+	encodeStr := base64.StdEncoding.EncodeToString([]byte(jsonStr))
+	fmt.Println(encodeStr)
 }

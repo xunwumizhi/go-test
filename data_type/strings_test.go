@@ -23,4 +23,6 @@ func TestStringBytes(t *testing.T) {
 	for i, n := range s {
 		fmt.Println(i, n)
 	}
+	var b byte = s[0]
+	fmt.Println(b)
 }

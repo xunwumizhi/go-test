@@ -34,3 +34,8 @@ func TestSortFn(t *testing.T) {
 func sortInt(list []int, less func(i, j int) bool) {
 	sort.Slice(list, less)
 }
+
+/*
+	堆排序、优先队列
+	heap package - container/heap - Go Packages https://pkg.go.dev/container/heap#Pop
+*/
