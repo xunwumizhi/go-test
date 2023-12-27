@@ -27,3 +27,8 @@ func TestDecimal(t *testing.T) {
 	fmt.Println(1 << 20)
 	fmt.Println(math.Log2(1048576))
 }
+
+func TestIntConv(t *testing.T) {
+	var i int = -304002
+	fmt.Println(int8(i))
+}

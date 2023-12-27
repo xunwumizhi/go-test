@@ -4,9 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/jinzhu/gorm"
-
-	_ "github.com/jinzhu/gorm/dialects/mysql"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 
 const (
@@ -25,7 +24,9 @@ var db *gorm.DB
 
 func init() {
 	var err error
-	db, err = gorm.Open("mysql", dsn)
+	conf := mysql.Config{DSN: dsn}
+	gormConf := &gorm.Config{}
+	db, err = gorm.Open(mysql.New(conf), gormConf)
 	if err != nil {
 		log.Fatal("open db fail")
 	}

@@ -8,7 +8,8 @@ import (
 
 func TestNilPoint(t *testing.T) {
 	var p *net.AddrError = nil
-	fmt.Println(*p) // panic
+	fmt.Printf("print: %+v\n", p)
+	// fmt.Println(*p) // panic
 }
 
 func TestDoNilStruct(t *testing.T) {

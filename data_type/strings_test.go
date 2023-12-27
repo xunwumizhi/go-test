@@ -16,6 +16,10 @@ arf
 	for i, v := range list {
 		fmt.Printf("%d: %s, len: %d\n", i, v, len(v))
 	}
+
+	fmt.Println(strings.TrimSpace(" fa fr a "))
+	fmt.Println(strings.TrimSpace("      fa fr a  "))
+	fmt.Println(strings.TrimSpace("    ") == "") // true
 }
 
 func TestStringBytes(t *testing.T) {
@@ -25,4 +29,10 @@ func TestStringBytes(t *testing.T) {
 	}
 	var b byte = s[0]
 	fmt.Println(b)
+}
+
+func TestRune(t *testing.T) {
+	msg := "你好\n\n   GG豪" // 特殊字符也算长度
+	fmt.Println([]rune(msg))
+	fmt.Println(len([]rune(msg)))
 }

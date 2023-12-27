@@ -156,3 +156,30 @@ func StopManually() {
 	// time.Sleep(8 * time.Second)
 	fmt.Println("main routine over")
 }
+
+type People struct {
+	Name  string
+	Hello string
+}
+
+// TestBatchRes 结果放指针map里面
+func TestBatchRes(t *testing.T) {
+	strList := []string{"Tome", "Jerry", "Bob"}
+	itemMap := map[int]*People{}
+	for i, v := range strList {
+		itemMap[i] = &People{Name: v}
+	}
+	var wg sync.WaitGroup
+	for i := range itemMap {
+		wg.Add(1)
+		go func(k string, p *People) {
+			defer wg.Done()
+			p.Hello = "Hello! " + p.Name
+		}(itemMap[i].Name, itemMap[i])
+	}
+	wg.Wait()
+
+	for _, v := range itemMap {
+		fmt.Printf("item: %+v\n", v)
+	}
+}

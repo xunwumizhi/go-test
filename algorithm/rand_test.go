@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"math/rand"
 	"strings"
 	"testing"
@@ -23,4 +24,41 @@ func TestShuffle(t *testing.T) {
 	})
 	fmt.Println(words)
 
+}
+
+func TestRandPick(t *testing.T) {
+	rand.Seed(time.Now().UnixNano())
+	fmt.Println(RandIndexs(1000000, 5000))
+	fmt.Println(RandIndexs(10, 5))
+	fmt.Println(RandIndexs(5, 5))
+	fmt.Println(RandIndexs(5, 10))
+}
+
+// RandIndexs 随机选取下标
+func RandIndexs(total int, size int) (indexMap map[int]struct{}) {
+	indexMap = make(map[int]struct{}) // 下标去重
+	defer func() {
+		var indexList []int
+		for k := range indexMap {
+			indexList = append(indexList, k)
+		}
+		fmt.Println(indexList)
+	}()
+
+	if size >= total { // 不大于期望
+		for i := 0; i < total; i++ {
+			_, ok := indexMap[i]
+			if ok {
+				log.Println("hit", i)
+			}
+			indexMap[i] = struct{}{} // 返回所有
+		}
+		return
+	}
+
+	for len(indexMap) < size {
+		index := rand.Intn(total) // (0, total]
+		indexMap[index] = struct{}{}
+	}
+	return
 }

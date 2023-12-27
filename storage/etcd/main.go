@@ -7,9 +7,9 @@ import (
 	"log"
 	"time"
 
-	"go.etcd.io/etcd/clientv3"
-	"go.etcd.io/etcd/clientv3/concurrency"
-	"go.etcd.io/etcd/mvcc/mvccpb"
+	"go.etcd.io/etcd/api/v3/mvccpb"
+	clientv3 "go.etcd.io/etcd/client/v3"
+	"go.etcd.io/etcd/client/v3/concurrency"
 )
 
 func main() {
@@ -31,7 +31,7 @@ type worker struct {
 }
 
 func (w *worker) doCrontab() {
-	if w.leaderFlag == true {
+	if w.leaderFlag {
 		fmt.Println(w.name, "doCrontab")
 	}
 }
@@ -68,12 +68,9 @@ func electionTest() {
 
 	go func() {
 		ticker := time.NewTicker(time.Duration(5) * time.Second)
-		for {
-			select {
-			case <-ticker.C:
-				go w1.doCrontab()
-				go w2.doCrontab()
-			}
+		for range ticker.C {
+			go w1.doCrontab()
+			go w2.doCrontab()
 		}
 	}()
 

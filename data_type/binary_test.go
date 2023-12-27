@@ -13,6 +13,15 @@ func TestBinary(t *testing.T) {
 	fmt.Println("0x11 to 10进制: ", _16var)
 }
 
+func TestBitOp(t *testing.T) {
+	var a uint64 = 124564
+	var bitKep uint64 = 3
+	fmt.Printf("%b\n", ^bitKep)
+	fmt.Printf("%b & %b = %b\n", a, ^bitKep, a&(^bitKep))
+	fmt.Println(a - a&(^bitKep))
+
+}
+
 func TestBit(t *testing.T) {
 	// 取反
 	var v uint32 = 474
